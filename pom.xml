@@ -64,7 +64,6 @@
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>3.4.0.905</version>
 				</plugin>
-				<!-- Other plugins here -->
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -82,5 +81,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Nexus Repository</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
