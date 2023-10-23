@@ -53,6 +53,10 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		
+		
+
+	</dependencies>
 		<distributionManagement>
 			<repository>
 				<id>deploymentRepo</id>
@@ -60,9 +64,6 @@
 				<url>http://localhost:8081/repository/maven-releases/</url>
 			</repository>
 		</distributionManagement>
-
-	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
