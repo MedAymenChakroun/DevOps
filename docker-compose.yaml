@@ -14,12 +14,12 @@ services:
   app:
     container_name: app
     depends_on:
-      - mysqldb
+      - mysqldb2
     build: ./
     image: nadaajel/achat-image:1.0.0
     ports:
       - 8089:8089
-    environment:
+   environment:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url":"jdbc:mysql://localhost:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true",
         "spring.datasource.username" : "root",
