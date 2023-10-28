@@ -26,14 +26,12 @@ services:
         "spring.datasource.password" :  "",
         "spring.jpa.show-sql" : "true",
         "spring.jpa.hibernate.ddl-auto" : "update",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect"
        }'
     volumes:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-  
 
 volumes:
   db:
