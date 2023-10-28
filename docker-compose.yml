@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=achatdb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+    ports:
+      - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - net
+
+  app-backend:
+    image: montassargaida/devops:11
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/achatdb
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      - db
+
+  frontend:
+    image: montassargaida/devops:frontend
+    ports:
+      - 4200:4200
+    depends_on:
+      - app
+networks :
+    net:
