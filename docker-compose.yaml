@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  mysqldb2:
+  mysqldb:
     image: mysql:5.7
-    container_name: mysqldb2
+    container_name: mysqldb
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=achat
@@ -14,7 +14,7 @@ services:
   app:
     container_name: app
     depends_on:
-      - mysqldb2
+      - mysqldb
     build: ./
     image: nadaajel/achat-image:1.0.0
     ports:
