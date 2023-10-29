@@ -1,41 +1,43 @@
-version: '3.7'
+version: "3.8"
+
 services:
-  db:
-    image: mysql:latest
-    restart: always
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=achatdb
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
-      - db-data:/var/lib/mysql
-    networks:
-      - net
-
-  app-backend:
-    image: montassargaida/devops:${DOCKERTAG}
-    ports:
-      - 8088:8088
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/achatdb
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
+      - db:/var/lib/mysql
+  app:
+    container_name: app
     depends_on:
-      - db
-    networks:
-      - net
-
-  frontend:
+      - mysqldb
+    build: ./
+    image: montassargaida/devops:21
+    ports:
+      - 8089:8089
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url":"jdbc:mysql://mysqldb:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" :  "",
+        "spring.jpa.show-sql" : "true",
+        "spring.jpa.hibernate.ddl-auto" : "update",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect"
+       }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+  front:
+    container_name: front
+    build: ./
     image: montassargaida/devops:frontend
     ports:
-      - 4200:4200
-    depends_on:
-      - app-backend
-    networks:
-      - net
-networks:
-  net:
+      - 4200:80
 
 volumes:
-  db-data:
+  db:
