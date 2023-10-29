@@ -4,10 +4,8 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=achatdb
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=
     ports:
       - 3306:3306
     volumes:
@@ -16,7 +14,7 @@ services:
       - net
 
   app-backend:
-    image: montassargaida/devops:11
+    image: montassargaida/devops:16
     ports:
       - 8080:8080
     environment:
@@ -31,6 +29,10 @@ services:
     ports:
       - 4200:4200
     depends_on:
-      - app
-networks :
-    net:
+      - app-backend
+
+networks:
+  net:
+
+volumes:
+  db-data:
