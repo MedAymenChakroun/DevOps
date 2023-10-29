@@ -1,5 +1,6 @@
-
 FROM adoptopenjdk:8-jdk-hotspot
+
+EXPOSE 8089
 
 WORKDIR /app
 
@@ -15,7 +16,8 @@ ENV NEXUS_USERNAME=admin
 ENV NEXUS_PASSWORD=nexus
 
 RUN curl -u $NEXUS_USERNAME:$NEXUS_PASSWORD -o app.jar $NEXUS_URL
-EXPOSE 8089
+
+
 # COPY target/my-spring-boot-app.jar app.jar
 
 ENTRYPOINT ["java","-jar","app.jar"]
