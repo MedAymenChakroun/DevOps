@@ -35,7 +35,7 @@ services:
   front:
     container_name: front
     build: ./
-    image: montassargaida/devops:frontend
+    image: montassargaida/angular:latest
     ports:
       - 4200:80
 
