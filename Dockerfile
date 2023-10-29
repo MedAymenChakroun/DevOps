@@ -24,12 +24,12 @@ RUN curl -u $NEXUS_USERNAME:$NEXUS_PASSWORD -o app.jar $NEXUS_URL
 ENTRYPOINT ["java","-jar","app.jar"]
 
 
+#
+#ENV JAR_URL=http://192.168.1.30:8081/repository/maven-releases/
+#
+#RUN curl -o app.jar ${JAR_URL}
+#
+## COPY target/my-spring-boot-app.jar app.jar
 
-ENV JAR_URL=http://192.168.1.30:8081/repository/maven-releases/
-
-RUN curl -o app.jar ${JAR_URL}
-
-# COPY target/my-spring-boot-app.jar app.jar
-
-ENTRYPOINT ["java","-jar","app.jar"]
+#ENTRYPOINT ["java","-jar","app.jar"]
 
