@@ -96,7 +96,7 @@ class ReglementMokitoTest {
 
         float result = reglementService.getChiffreAffaireEntreDeuxDate(startDate, endDate);
 
-        
+
         assertEquals(100.0f, result);
     }
 }
