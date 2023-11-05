@@ -16,7 +16,7 @@ services:
     depends_on:
       - mysqldb
     build: ./
-    image: nadaajel/achat:ddb
+    image: nadaajel/achat:1.0.0
     ports:
       - 8089:8089
     environment:
@@ -26,12 +26,8 @@ services:
             "spring.datasource.password" :  "",
             "spring.jpa.show-sql" : "true",
             "spring.jpa.hibernate.ddl-auto" : "update",
-            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect", 
-            "management.endpoints.web.exposure.include" : "*" ,
-            "management.endpoint.health.show-details" : "always",
-            "management.endpoint.metrics.enabled" : "true" ,
-            "management.endpoint.prometheus.enabled" : "true"
-
+            "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect"
+          
             
            }'
       SPRING_PROFILES_ACTIVE: prod,actuator
@@ -42,7 +38,7 @@ services:
   front:
     container_name: front
     build: ./
-    image: nadaajel/front:ccb
+    image: nadaajel/front:1.0.0
     ports:
       - 4200:80
 
