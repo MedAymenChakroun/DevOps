@@ -27,9 +27,9 @@ services:
             "spring.jpa.show-sql" : "true",
             "spring.jpa.hibernate.ddl-auto" : "update",
             "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect", 
-            "management.endpoints.web.exposure.include: *" ,
-            "management.endpoint.health.show-details:always",
-            "management.endpoint.metrics.enabled:true, 
+            "management.endpoints.web.exposure.include" : "*" ,
+            "management.endpoint.health.show-details" : "always",
+            "management.endpoint.metrics.enabled" : "true" 
             
            }'
       SPRING_PROFILES_ACTIVE: prod,actuator
