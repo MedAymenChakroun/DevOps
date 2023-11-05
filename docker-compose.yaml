@@ -16,7 +16,7 @@ services:
     depends_on:
       - mysqldb
     build: ./
-    image: nadaajel/achat-image:cba
+    image: nadaajel/achat-image:ddb
     ports:
       - 8089:8089
     environment:
@@ -36,7 +36,7 @@ services:
   front:
     container_name: front
     build: ./
-    image: nadaajel/front-image:abc
+    image: nadaajel/front-image:ccb
     ports:
       - 4200:80
 
