@@ -16,7 +16,7 @@ services:
     depends_on:
       - mysqldb
     build: ./
-    image: nadaajel/achat-image:1.0.0
+    image: nadaajel/achat-image:cba
     ports:
       - 8089:8089
     environment:
@@ -27,6 +27,7 @@ services:
         "spring.jpa.show-sql" : "true",
         "spring.jpa.hibernate.ddl-auto" : "update",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect"
+        "SPRING_PROFILES_ACTIVE: prod,actuator"
        }'
     volumes:
       - .m2:/root/.m2
@@ -35,7 +36,7 @@ services:
   front:
     container_name: front
     build: ./
-    image: nadaajel/front-image:1.0.0
+    image: nadaajel/front-image:abc
     ports:
       - 4200:80
 
