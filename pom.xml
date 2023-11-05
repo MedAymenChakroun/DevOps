@@ -41,7 +41,6 @@
     <groupId>org.mockito</groupId>
     <artifactId>mockito-core</artifactId>
     <version>3.12.4</version>
-    <!-- Use a more recent version if available -->
     <scope>test</scope>
 		</dependency>
 		<dependency>
