@@ -1,7 +1,7 @@
 FROM openjdk:11-oracle
 
 
-ENV NEXUS_URL=http://192.168.1.19:8081/repository/maven-releases/
+ENV NEXUS_URL=http://192.168.26.33:8081/repository/maven-releases/
 ENV GROUP_ID=tn/esprit/rh
 ENV ARTIFACT_ID=achat
 ENV ARTIFACT_VERSION=1.1
